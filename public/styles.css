@@ -1,0 +1,163 @@
+:root {
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+/* Body */
+body {
+  min-height: 100vh;
+  background: #212534;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  font-family: sans-serif;
+}
+
+/* Title */
+h1 {
+  color: #e0e0ff;
+  font-family: "Titan One", cursive;
+  margin-bottom: 10px;
+}
+
+/* Controls container */
+.controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Dropdown */
+select {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #e0e0ff;
+
+  font-size: 16px;
+  font-family: "Titan One", cursive;
+
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+select:hover {
+  background: rgba(200, 180, 255, 0.2);
+}
+
+select:focus {
+  box-shadow: 0 0 10px rgba(200, 180, 255, 0.6);
+}
+
+option {
+  background: #2a2d3a;
+  color: #e0e0ff;
+}
+
+/* Button */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #c8b6ff, #9f8cff);
+  color: #222;
+
+  cursor: pointer;
+  font-weight: bold;
+
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(200, 180, 255, 0.6);
+}
+
+/* Card */
+.card {
+  width: var(--card-width);
+  height: var(--card-height);
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+
+  margin-top: 20px;
+
+  /* ✅ Background image */
+  background: url("/images/bg.png");
+  background-size: cover;
+  background-position: center;
+
+  transition: transform 0.4s;
+}
+
+/* Hover zoom */
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(200, 180, 255, 0.4);
+}
+
+/* Aurora glow */
+.card::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+
+  background:
+    radial-gradient(circle at 30% 30%, #ffffff33, transparent 40%),
+    radial-gradient(circle at 70% 40%, #c8b6ff55, transparent 40%),
+    radial-gradient(circle at 50% 70%, #dcdcff55, transparent 40%);
+
+  animation: auroraMove 10s linear infinite;
+}
+
+/* Overlay + blur */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+/* Animation */
+@keyframes auroraMove {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Joke text */
+.joke {
+  position: relative;
+  z-index: 1;
+
+  opacity: 0;
+  transition: 0.8s;
+
+  padding: 20px;
+  font-size: 18px;
+  font-family: "Gloria Hallelujah", cursive;
+}
+
+/* Show on hover */
+.card:hover .joke {
+  opacity: 1;
+}

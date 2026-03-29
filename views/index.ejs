@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Spooky Joke Card 👻</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Titan+One&display=swap" rel="stylesheet">
+
+  <!-- Correct CSS path -->
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+  <h1>Hover to Reveal Joke 👻</h1>
+
+  <form action="/" method="POST">
+    <select name="category">
+      <option value="Any">Any</option>
+      <option value="Programming">Programming</option>
+      <option value="Dark">Dark</option>
+      <option value="Pun">Pun</option>
+      <option value="Miscellaneous">Misc</option>
+  </select>
+    <button type="submit">New Joke</button>
+  </form>
+
+  <!-- CLEAN CARD -->
+  <div class="card">
+    <p class="joke">
+        <%= joke %>
+    </p>
+  </div>
+
+</body>
+
+</html>
